@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-
-__author__ = 'Shining'
-__email__ = 'mrshininnnnn@gmail.com'
+__author__ = 'Author'
+__email__ = 'Email'
 
 
 import json
@@ -22,6 +21,3 @@ def scan_parser(lines: list) -> list:
 def save_json(path: str, data_dict: dict) -> None:
     with open(path, 'w') as f:
         json.dump(data_dict, f, ensure_ascii=False)
-
-# def white_space_tokenizer(str_seq_list: list) -> list:
-#     return [str_seq.split(' ') for str_seq in str_seq_list]
