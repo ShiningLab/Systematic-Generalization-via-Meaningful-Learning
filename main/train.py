@@ -1,15 +1,17 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-__author__ = 'Author'
-__email__ = 'Email'
+__author__ = 'Shining'
+__email__ = 'mrshininnnnn@gmail.com'
 
+
+# built-in
 import random
 from datetime import datetime
-
+# public
 from tqdm import tqdm
 import torch
 from torch.utils import data as torch_data
-
+# private
 from config import Config
 from src.utils import load, save, pipeline
 from src.utils.eva import Evaluater
@@ -34,7 +36,6 @@ class Translator(object):
         self.config.device = 'cuda' if self.config.use_gpu else 'cpu'
         # training settings
         self.start_time = datetime.now()
-        # self.finished = False 
         self.step, self.epoch = 0, 0
         self.train_log = ['Start Time: {}'.format(self.start_time)]
         self.test_log = self.train_log.copy()
@@ -116,18 +117,18 @@ class Translator(object):
         while self.epoch < self.config.train_epoch:
             print('\nTraining...')
             train_loss, train_iteration = .0, 0
-            all_xs, all_ys, all_y_masks, all_ys_ = [], [], [], []
+            all_xs, all_ys, all_ys_ = [], [], []
             self.model.train()
             train_generator = tqdm(self.train_generator)
             for raw_data, data in train_generator:
                 data = (d.to(self.config.device) for d in data)
                 xs, x_lens, ys = data
-            #     print(x_lens.cpu().detach().numpy()[0])
-            #     print(pipeline.translate(xs.cpu().detach().numpy()[0], self.src_idx2vocab_dict))
-            #     print(pipeline.translate(ys.cpu().detach().numpy()[0], self.tgt_idx2vocab_dict))
-            #     break
+                # print(x_lens.cpu().detach().numpy()[0])
+                # print(pipeline.translate(xs.cpu().detach().numpy()[0], self.src_idx2vocab_dict))
+                # print(pipeline.translate(ys.cpu().detach().numpy()[0], self.tgt_idx2vocab_dict))
+                ys_ = self.model(xs, x_lens, ys)
+                # break
             # break
-                ys_ = self.model(xs, x_lens, ys, self.config.teacher_forcing_ratio)
                 loss = self.criterion(ys_.reshape(-1, self.config.tgt_vocab_size), ys.reshape(-1))
                 # update step
                 loss.backward()
@@ -138,10 +139,9 @@ class Translator(object):
                 train_generator.set_description('Loss:{:.4f}'.format(loss.item()))
                 # postprocess
                 ys_ = torch.argmax(ys_, dim=2).cpu().detach().numpy() # batch_size, max_ys_seq_len
-                xs, ys, ys_ = pipeline.post_process(ys_, raw_data, self.tgt_idx2vocab_dict)
-                # print(xs[0])
-                # print(ys[0])
-                # print(ys_[0])
+                ys_ = pipeline.post_process(ys_, self.tgt_idx2vocab_dict, self.config)
+                # record
+                xs, ys = raw_data
                 all_xs += xs
                 all_ys += ys 
                 all_ys_ += ys_
@@ -151,8 +151,8 @@ class Translator(object):
             # break
             # evaluation
             loss = train_loss / train_iteration
-            eva_matrix = Evaluater(all_ys, all_ys_)
-            eva_msg = 'Train Epoch {} Total Step {} Loss:{:.4f} '.format(self.epoch, self.step, loss)
+            eva_matrix = Evaluater(all_ys, all_ys_, self.config)
+            eva_msg = 'Train Epoch {} Total Step {} Loss:{:.4f}\n'.format(self.epoch, self.step, loss)
             eva_msg += eva_matrix.eva_msg
             print(eva_msg)
             # record
@@ -161,10 +161,9 @@ class Translator(object):
             src, tar, pred = random.choice([(x, y, y_) for x, y, y_ in zip(all_xs, all_ys, all_ys_)])
             print(' src: {}\n tgt: {}\n pred: {}'.format(' '.join(src), ' '.join(tar), ' '.join(pred)))
             # break
-            # test
-            # self.test()
             self.epoch += 1
             # test
+            # self.test()
             if not self.epoch % self.config.test_epoch:
                 self.test()
             # save model
@@ -199,23 +198,22 @@ class Translator(object):
                 data = (d.to(self.config.device) for d in data)
                 xs, x_lens, ys = data
                 # disable teacher forcing
-                ys_ = self.model(xs, x_lens, ys, 0.)
+                ys_ = self.model(xs, x_lens, ys)
                 loss = self.criterion(ys_.reshape(-1, self.config.tgt_vocab_size), ys.reshape(-1))
                 test_loss += loss.item()
                 # postprocess
                 ys_ = torch.argmax(ys_, dim=2).cpu().detach().numpy() # batch_size, max_ys_seq_len
-                xs, ys, ys_ = pipeline.post_process(ys_, raw_data, self.tgt_idx2vocab_dict)
-                # print(xs[0])
-                # print(ys[0])
-                # print(ys_[0])
+                ys_ = pipeline.post_process(ys_, self.tgt_idx2vocab_dict, self.config)
+                xs, ys = raw_data
+                # record
                 all_xs += xs
                 all_ys += ys 
                 all_ys_ += ys_
                 test_iteration += 1
                 # break
         loss = test_loss / test_iteration
-        eva_matrix = Evaluater(all_ys, all_ys_)
-        eva_msg = 'Test Epoch {} Total Step {} Loss:{:.4f} '.format(self.epoch, self.step, loss)
+        eva_matrix = Evaluater(all_ys, all_ys_, self.config)
+        eva_msg = 'Test Epoch {} Total Step {} Loss:{:.4f}\n'.format(self.epoch, self.step, loss)
         eva_msg += eva_matrix.eva_msg
         print(eva_msg)
         # record
@@ -227,6 +225,7 @@ class Translator(object):
         self.test_src = [' '.join(x) for x in all_xs]
         self.test_tgt = [' '.join(y) for y in all_ys]
         self.test_pred = [' '.join(y_) for y_ in all_ys_]
+
 
 def main():
     # initialize pipeline

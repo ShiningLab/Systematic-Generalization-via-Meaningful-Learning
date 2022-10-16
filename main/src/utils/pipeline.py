@@ -1,13 +1,14 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-__author__ = 'Author'
-__email__ = 'Email'
+__author__ = 'Shining'
+__email__ = 'mrshininnnnn@gmail.com'
 
 
 import torch
 from torch.utils import data as torch_data
 
-from ..models import bi_lstm_rnn_att
+from ..models import bi_lstm_rnn_att, cnn_att, transformer
+
 
 class Dataset(torch_data.Dataset):
     """docstring for Dataset"""
@@ -25,9 +26,14 @@ class Dataset(torch_data.Dataset):
 
 def pick_model(config):
     # auto regressive
-    if config.auto_regressive:
+    if config.mode == 'seq2seq':
         if config.model_name == 'bi_lstm_rnn_att':
             return bi_lstm_rnn_att.ModelGraph(config).to(config.device)
+        elif config.model_name == 'cnn_att':
+            return cnn_att.ModelGraph(config).to(config.device)
+        elif config.model_name == 'transformer':
+            return transformer.ModelGraph(config).to(config.device)
+
 
 def init_parameters(model): 
     for name, parameters in model.named_parameters(): 
@@ -61,6 +67,8 @@ def show_config(config, model):
     general_info += '\nif load check point: {}'.format(config.load_check_point)
     if config.load_check_point:
         general_info += '\nModel restored from {}'.format(config.SAVE_POINT)
+    else:
+        general_info += '\nModel saved to {}'.format(config.SAVE_POINT)
     general_info += '\n'
     print(general_info)
 
@@ -69,11 +77,15 @@ def show_config(config, model):
 def translate(seq: list, trans_dict: dict) -> list: 
     return [trans_dict[token] for token in seq]
 
-def post_process(ys_, raw_data, tgt_idx2vocab_dict):
-    raw_xs, raw_ys = raw_data
-    ys_ = [y_[:len(y)] for y, y_ in zip(raw_ys, ys_)]
-    ys_ = [translate(y_, tgt_idx2vocab_dict) for y_ in ys_]
-    return raw_xs, raw_ys, ys_
+def post_process(idx_ys_, tgt_idx2vocab_dict, config):
+    vocab_ys_ = []
+    for i in range(len(idx_ys_)):
+        y_ = idx_ys_[i].tolist()
+        if config.EOS_IDX in y_:
+            y_ = y_[:y_.index(config.EOS_IDX)]
+        vocab_ys_.append(y_)
+    vocab_ys_ = [translate(y_, tgt_idx2vocab_dict) for y_ in vocab_ys_]
+    return vocab_ys_
 
 def save_model(step, epoch, model_state_dict, opt_state_dict, path):
     # save model, optimizer, and everything required to keep

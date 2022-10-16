@@ -1,3 +1,9 @@
+scan/
+advising/
+geography/
+iwslt14/
+iwslt15/
+*.ipynb
 *.txt
 *.zip
 *.icloud

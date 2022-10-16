@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-__author__ = 'Author'
-__email__ = 'Email'
+__author__ = 'Shining'
+__email__ = 'mrshininnnnn@gmail.com'
+
 
 def save_txt(path, line_list):
 
