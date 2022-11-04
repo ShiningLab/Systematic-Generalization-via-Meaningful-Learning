@@ -16,10 +16,10 @@ class Config():
         self.data = 'scan'
         # experiments for section 3.3
         # exp0_100, exp0_80, exp0_60, exp0_40, exp0_20, exp0_10
-        # exp0_10_, exp0_8_, exp0_6_, exp0_4_, exp0_2_, exp0_1
+        # exp0_10_, exp0_8_, exp0_6_, exp0_4_, exp0_2_, exp0_1_
         # experiments for section 3.4.1 and 3.4.2
         # exp1, exp2, exp31, exp32, exp33
-        self.exp = 'exp0_1'
+        self.exp = 'exp0_1_'
         self.num_primitives = 4
         self.num_synonyms = 10
         if self.data in ['geography', 'advising']:
