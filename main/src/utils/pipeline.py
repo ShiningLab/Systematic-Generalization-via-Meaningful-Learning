@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 __author__ = 'Shining'
-__email__ = 'mrshininnnnn@gmail.com'
+__email__ = 'ning.shi@ualberta.ca'
 
 
 # public
@@ -26,17 +26,26 @@ class Dataset(torch_data.Dataset):
         return self.xs[idx], self.ys[idx]
 
 def pick_model(config):
-    # auto regressive
+    """
+    To pick the model structure given configurations
+    """
     if config.mode == 'seq2seq':
+        # bi-directional LSTM with attention
         if config.model_name == 'bi_lstm_rnn_att':
             return bi_lstm_rnn_att.ModelGraph(config).to(config.device)
+        # CNN with attention
         elif config.model_name == 'cnn_att':
             return cnn_att.ModelGraph(config).to(config.device)
+        # a
         elif config.model_name == 'transformer':
             return transformer.ModelGraph(config).to(config.device)
+    raise NotImplementedError
 
 
 def init_parameters(model): 
+    """
+    To initialize model parameters
+    """
     for name, parameters in model.named_parameters(): 
         if 'weight' in name: 
             torch.nn.init.normal_(parameters.data, mean=0, std=0.01)

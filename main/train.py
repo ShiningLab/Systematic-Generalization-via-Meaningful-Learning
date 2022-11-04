@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 __author__ = 'Shining'
-__email__ = 'mrshininnnnn@gmail.com'
+__email__ = 'ning.shi@ualberta.ca'
 
 
 # built-in
@@ -15,6 +15,7 @@ from torch.utils import data as torch_data
 from config import Config
 from src.utils import load, save, pipeline
 from src.utils.eva import Evaluater
+
 
 class Translator(object):
     """docstring for Translator"""

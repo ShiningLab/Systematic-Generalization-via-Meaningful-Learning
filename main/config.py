@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 __author__ = 'Shining'
-__email__ = 'mrshininnnnn@gmail.com'
+__email__ = 'ning.shi@ualberta.ca'
 
 
 # built-in
@@ -16,10 +16,10 @@ class Config():
         self.data = 'scan'
         # experiments for section 3.3
         # exp0_100, exp0_80, exp0_60, exp0_40, exp0_20, exp0_10
-        # exp0_10_, exp0_8_, exp0_6_, exp0_4_, exp0_2_, exp0_1_
+        # exp0_10_, exp0_8_, exp0_6_, exp0_4_, exp0_2_, exp0_1
         # experiments for section 3.4.1 and 3.4.2
         # exp1, exp2, exp31, exp32, exp33
-        self.exp = 'exp1'
+        self.exp = 'exp0_1'
         self.num_primitives = 4
         self.num_synonyms = 10
         if self.data in ['geography', 'advising']:
@@ -45,18 +45,18 @@ class Config():
             self.DATA_PATH, self.data, self.exp, str(self.num_primitives), str(self.num_synonyms), 'vocab.json')
         # path to save and load check point
         self.SAVE_PATH = os.path.join(
-            self.RESOURCE_PATH, 'check_points', self.data, self.exp, str(self.num_primitives), str(self.num_synonyms), self.mode, str(self.lan_model).replace('/', '-'), str(self.random_seed))
+            self.RESOURCE_PATH, 'check_points', self.data, self.exp, str(self.num_primitives), str(self.num_synonyms), str(self.random_seed))
         if not os.path.exists(self.SAVE_PATH): os.makedirs(self.SAVE_PATH)
         self.SAVE_POINT = os.path.join(self.SAVE_PATH, '{}.pt'.format(self.model_name))
         if not os.path.exists(self.SAVE_POINT): self.load_check_point = False
         # path to save log
         self.LOG_PATH = os.path.join(
-            self.RESOURCE_PATH, 'log', self.data, self.exp, str(self.num_primitives), str(self.num_synonyms), self.mode, str(self.lan_model).replace('/', '-'), self.model_name, str(self.random_seed))
+            self.RESOURCE_PATH, 'log', self.data, self.exp, str(self.num_primitives), str(self.num_synonyms), self.model_name, str(self.random_seed))
         if not os.path.exists(self.LOG_PATH): os.makedirs(self.LOG_PATH)
         self.LOG_POINT = os.path.join(self.LOG_PATH,  '{}.txt')
         # path to save output
         self.RESULT_PATH = os.path.join(
-            self.RESOURCE_PATH, 'results', self.data, self.exp, str(self.num_primitives), str(self.num_synonyms), self.mode, str(self.lan_model).replace('/', '-'), self.model_name, str(self.random_seed))
+            self.RESOURCE_PATH, 'results', self.data, self.exp, str(self.num_primitives), str(self.num_synonyms), self.model_name, str(self.random_seed))
         if not os.path.exists(self.RESULT_PATH): os.makedirs(self.RESULT_PATH)
         self.RESULT_POINT = os.path.join(self.RESULT_PATH, '{}.txt')
         # initialization

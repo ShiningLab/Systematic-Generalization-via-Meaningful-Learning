@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 __author__ = 'Shining'
-__email__ = 'mrshininnnnn@gmail.com'
+__email__ = 'ning.shi@ualberta.ca'
 
 
 # built-in

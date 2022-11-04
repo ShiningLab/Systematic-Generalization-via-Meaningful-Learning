@@ -3,6 +3,7 @@ advising/
 geography/
 iwslt14/
 iwslt15/
+*.sh
 *.ipynb
 *.txt
 *.zip
