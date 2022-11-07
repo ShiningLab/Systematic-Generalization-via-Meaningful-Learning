@@ -11,7 +11,7 @@ import os
 class Config():
       # config settings
       def __init__(self):
-        self.random_seed = 1
+        self.random_seed = 0
         # scan, geography, advising
         self.data = 'scan'
         # experiments for section 3.3

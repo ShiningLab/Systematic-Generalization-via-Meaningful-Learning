@@ -78,9 +78,7 @@ def show_config(config, model):
         general_info += '\nModel restored from {}'.format(config.SAVE_POINT)
     else:
         general_info += '\nModel saved to {}'.format(config.SAVE_POINT)
-    general_info += '\n'
     print(general_info)
-
     return general_info
 
 def translate(seq: list, trans_dict: dict) -> list: 

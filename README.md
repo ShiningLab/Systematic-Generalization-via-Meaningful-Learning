@@ -68,13 +68,16 @@ $ python train.py
 ```
 
 ## Outputs
+If everything goes well, there should be a similar progressing shown as below.
 ```
 Initialize...
-
 *Configuration*
 model name: bi_lstm_rnn_att
 trainable parameters:5,027,337
 ...
+Training...
+Loss:1.7061: 100%|██████████| 132/132 [00:14<00:00,  9.37it/s]
+Train Epoch 0 Total Step 132 Loss:1.9179
 ...
 ```
 
