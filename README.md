@@ -1,5 +1,5 @@
 # Systematic-Generalization-via-Meaningful-Learning
-This repository is for the paper [Revisit Systematic Generalization via Meaningful Learning](https://arxiv.org/abs/2003.06658) in *Proceedings of the Fifth BlackboxNLP Workshop on Analyzing and Interpreting Neural Networks for NLP*.
+This repository is for the paper [Revisit Systematic Generalization via Meaningful Learning](https://arxiv.org/abs/2003.06658) in *Proceedings of the Fifth BlackboxNLP Workshop on Analyzing and Interpreting Neural Networks for NLP* collocated with EMNLP 2022.
 
 ## Directory
 + **main/config.py** - Configurations
@@ -43,7 +43,7 @@ All datasets can be downloaded [here](https://drive.google.com/drive/folders/19v
 * main/res/data/geography
 * main/res/data/advising
 
-### NMT & SP
+### Notes
 + main/res/data/iwslt14 - the datasets for IWSLT14, including both vocabulary augmentation set and the entire dataset
 + main/res/data/iwslt15 - the datasets for IWSLT15, including both vocabulary augmentation set and the entire dataset
 + main/res/data/prepare-iwslt14.sh - the [fairseq](https://github.com/facebookresearch/fairseq) preprocess script for IWSLT14
@@ -79,7 +79,7 @@ trainable parameters:5,027,337
 ```
 
 ## NMT
-We use [fairseq](https://github.com/facebookresearch/fairseq) for the neural machine translation (NMT) tasks in Section 4.1. Please find the example pipeline shown below.
+We use [fairseq](https://github.com/facebookresearch/fairseq) for NMT tasks in Section 4.1. Please find the example pipeline shown below.
 
 ### Models
 + LSTM - lstm_luong_wmt_en_de
