@@ -44,10 +44,10 @@ All datasets can be downloaded [here](https://drive.google.com/drive/folders/19v
 * main/res/data/advising
 
 ### Notes
-+ main/res/data/iwslt14 - the datasets for IWSLT14, including both vocabulary augmentation set and the entire dataset
-+ main/res/data/iwslt15 - the datasets for IWSLT15, including both vocabulary augmentation set and the entire dataset
-+ main/res/data/prepare-iwslt14.sh - the [fairseq](https://github.com/facebookresearch/fairseq) preprocess script for IWSLT14
-+ main/res/data/prepare-iwslt15.sh - the [fairseq](https://github.com/facebookresearch/fairseq) preprocess script for IWSLT15
++ main/res/data/iwslt14 - datasets for IWSLT14, including both vocabulary augmentation set and the entire dataset
++ main/res/data/iwslt15 - datasets for IWSLT15, including both vocabulary augmentation set and the entire dataset
++ main/res/data/prepare-iwslt14.sh - [fairseq](https://github.com/facebookresearch/fairseq) preprocess script for IWSLT14
++ main/res/data/prepare-iwslt15.sh - [fairseq](https://github.com/facebookresearch/fairseq) preprocess script for IWSLT15
 + main/res/data/geo_vars.txt - the entity augmentation set for Grography
 + main/res/data/adv_vars.txt - the entity augmentation set for Advising
 
