@@ -57,7 +57,7 @@ def count_parameters(model):
 
 def show_config(config, model):
     # general information
-    general_info = '\n*Configuration*'
+    general_info = '*Configuration*'
     general_info += '\nmodel name: {}'.format(config.model_name)
     general_info += '\ntrainable parameters:{:,.0f}'.format(config.num_parameters)
     model_info = '\nmodel structure:'
