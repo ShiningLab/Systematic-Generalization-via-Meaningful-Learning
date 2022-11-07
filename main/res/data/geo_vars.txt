@@ -1,0 +1,103 @@
+arizona
+chicago
+mississippi
+alaska
+austin
+detroit
+utah
+new hampshire
+sacramento
+potomac
+kalamazoo
+oregon
+usa
+pittsburgh
+wisconsin
+montana
+salt lake city
+durham
+west virginia
+dallas
+missouri
+pennsylvania
+erie
+rhode island
+washington
+kentucky
+south carolina
+death valley
+north dakota
+minnesota
+hawaii
+kansas
+colorado
+miami
+san jose
+rochester
+iowa
+north platte
+wyoming
+north carolina
+whitney
+michigan
+baton rouge
+arkansas
+minneapolis
+seattle
+spokane
+tucson
+dc
+massachusetts
+indiana
+montgomery
+illinois
+guadalupe peak
+tempe
+california
+san antonio
+columbus
+salem
+new mexico
+florida
+texas
+delaware
+des moines
+ohio
+alabama
+portland
+georgia
+maine
+new orleans
+red
+mckinley
+springfield
+louisiana
+flint
+oklahoma
+vermont
+dover
+houston
+albany
+new york
+chattahoochee
+rio grande
+virginia
+nevada
+san diego
+riverside
+atlanta
+idaho
+mount mckinley
+tennessee
+south dakota
+fort wayne
+boston
+maryland
+new jersey
+scotts valley
+indianapolis
+san francisco
+denver
+plano
+boulder
+nebraska

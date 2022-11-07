@@ -41,7 +41,6 @@ def pick_model(config):
             return transformer.ModelGraph(config).to(config.device)
     raise NotImplementedError
 
-
 def init_parameters(model): 
     """
     To initialize model parameters
@@ -59,9 +58,9 @@ def count_parameters(model):
 def show_config(config, model):
     # general information
     general_info = '\n*Configuration*'
-    general_info += '\nmodel: {}'.format(config.model_name)
+    general_info += '\nmodel name: {}'.format(config.model_name)
     general_info += '\ntrainable parameters:{:,.0f}'.format(config.num_parameters)
-    model_info = '\nmodel:'
+    model_info = '\nmodel structure:'
     for parameters in model.state_dict():
         model_info += '\n{}\t{}'.format(parameters, model.state_dict()[parameters].size())
     general_info += model_info

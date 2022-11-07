@@ -19,6 +19,9 @@ class Config():
         # exp0_10_, exp0_8_, exp0_6_, exp0_4_, exp0_2_, exp0_1_
         # experiments for section 3.4.1 and 3.4.2
         # exp1, exp2, exp31, exp32, exp33
+        # experiments for section 4.2
+        # exp41 for normal real data
+        # exp42 for augmentated real data
         self.exp = 'exp0_1_'
         self.num_primitives = 4
         self.num_synonyms = 10
@@ -28,8 +31,6 @@ class Config():
         if self.exp in ['exp41', 'exp42']:
             self.num_primitives = 'all'
             self.num_synonyms = 'all'
-        # seq2seq
-        self.mode = 'seq2seq'
         # bi_lstm_rnn_att, cnn_att, transformer
         self.model_name = 'bi_lstm_rnn_att'
         self.load_check_point = False

@@ -3,9 +3,8 @@ advising/
 geography/
 iwslt14/
 iwslt15/
-*.sh
+run.sh
 *.ipynb
-*.txt
 *.zip
 *.icloud
 *.json
