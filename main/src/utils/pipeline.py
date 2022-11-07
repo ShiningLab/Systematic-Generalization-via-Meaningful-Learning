@@ -29,17 +29,17 @@ def pick_model(config):
     """
     To pick the model structure given configurations
     """
-    if config.mode == 'seq2seq':
-        # bi-directional LSTM with attention
-        if config.model_name == 'bi_lstm_rnn_att':
-            return bi_lstm_rnn_att.ModelGraph(config).to(config.device)
-        # CNN with attention
-        elif config.model_name == 'cnn_att':
-            return cnn_att.ModelGraph(config).to(config.device)
-        # a
-        elif config.model_name == 'transformer':
-            return transformer.ModelGraph(config).to(config.device)
-    raise NotImplementedError
+    # bi-directional LSTM with attention
+    if config.model_name == 'bi_lstm_rnn_att':
+        return bi_lstm_rnn_att.ModelGraph(config).to(config.device)
+    # CNN with attention
+    elif config.model_name == 'cnn_att':
+        return cnn_att.ModelGraph(config).to(config.device)
+    # transformer
+    elif config.model_name == 'transformer':
+        return transformer.ModelGraph(config).to(config.device)
+    else:
+        raise NotImplementedError
 
 def init_parameters(model): 
     """
