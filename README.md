@@ -13,12 +13,15 @@ Systematic-Generalization-via-Meaningful-Learning
 │   ├── res
 │   │   ├── check_points
 │   │   ├── data
-│   │   │   ├── geo_vars.txt
-│   │   │   ├── adv_vars.txt
-│   │   │   ├── prepare-iwslt15.sh
 │   │   │   ├── scan
 │   │   │   ├── geography
-│   │   │   └── advising
+│   │   │   ├── advising
+│   │   │   ├── geo_vars.txt
+│   │   │   ├── adv_vars.txt
+│   │   │   ├── iwslt14
+│   │   │   ├── iwslt15
+│   │   │   ├── prepare-iwslt14.sh
+│   │   │   └── prepare-iwslt15.sh
 │   │   ├── log
 │   │   └── result
 │   ├── src
@@ -41,8 +44,11 @@ All datasets can be downloaded [here](https://drive.google.com/drive/folders/19v
 * main/res/data/advising
 
 ### NMT & SP
-+ main/res/data/prepare-iwslt15.sh - the example preprocess script for NMT by [fairseq](https://github.com/facebookresearch/fairseq)
-+ main/res/data/geo_vars.txt - the entity augmentation set or Grography
++ main/res/data/iwslt14 - the datasets for IWSLT14, including both vocabulary augmentation set and the entire dataset
++ main/res/data/iwslt15 - the datasets for IWSLT15, including both vocabulary augmentation set and the entire dataset
++ main/res/data/prepare-iwslt14.sh - the [fairseq](https://github.com/facebookresearch/fairseq) preprocess script for IWSLT14
++ main/res/data/prepare-iwslt15.sh - the [fairseq](https://github.com/facebookresearch/fairseq) preprocess script for IWSLT15
++ main/res/data/geo_vars.txt - the entity augmentation set for Grography
 + main/res/data/adv_vars.txt - the entity augmentation set for Advising
 
 ## Setup
@@ -55,7 +61,7 @@ $ pip install -r requirements.txt
 ```
 
 ## Run
-Before training, please take a look at the **config.py** to ensure training configurations.
+Before training, please double check **config.py** to ensure training configurations.
 ```
 $ vim config.py
 $ python train.py
@@ -66,24 +72,10 @@ $ python train.py
 Initialize...
 
 *Configuration*
-model: bi_lstm_rnn_att
+model name: bi_lstm_rnn_att
 trainable parameters:5,027,337
-model:
-encoder.embedding.weight        torch.Size([54, 512])
 ...
-decoder.out.bias        torch.Size([9])
-device: cuda
-use gpu: True
-train size: 16770
-test size: 65830
-source vocab size: 54
-target vocab size: 9
-batch size: 128
-train batch: 132
-test batch: 515
-if load check point: False
-Model saved to /home/fujie/shining/repos/Systematic-Generalization-via-Meaningful-Learning/main/res/check_points/scan/e
-xp0_1_/4/10/0/bi_lstm_rnn_att.pt
+...
 ```
 
 ## NMT
