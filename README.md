@@ -1,5 +1,7 @@
 # Systematic-Generalization-via-Meaningful-Learning
-This repository is for the paper [Revisit Systematic Generalization via Meaningful Learning](https://arxiv.org/abs/2003.06658) in *Proceedings of the Fifth BlackboxNLP Workshop on Analyzing and Interpreting Neural Networks for NLP* collocated with EMNLP 2022.
+This repository is for the paper [Revisit Systematic Generalization via Meaningful Learning](https://aclanthology.org/2022.blackboxnlp-1.6) in *Proceedings of the Fifth BlackboxNLP Workshop on Analyzing and Interpreting Neural Networks for NLP* collocated with EMNLP 2022.
+
+[[arXiv](https://arxiv.org/abs/2003.06658)] [[Poster](https://www.shininglab.ai/assets/posters/Revisit_Systematic_Generalization_via_Meaningful_Learning.pdf)]
 
 ## Directory
 + **main/config.py** - Configurations
@@ -168,5 +170,20 @@ fairseq-generate data-bin/iwslt14.tokenized.de-en \
 
 ## BibTex
 ```
-TODO.
+@inproceedings{shi-etal-2022-revisit,
+    title = "Revisit Systematic Generalization via Meaningful Learning",
+    author = "Shi, Ning  and
+      Wang, Boxin  and
+      Wang, Wei  and
+      Liu, Xiangyu  and
+      Lin, Zhouhan",
+    booktitle = "Proceedings of the Fifth BlackboxNLP Workshop on Analyzing and Interpreting Neural Networks for NLP",
+    month = dec,
+    year = "2022",
+    address = "Abu Dhabi, United Arab Emirates (Hybrid)",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2022.blackboxnlp-1.6",
+    pages = "62--79",
+    abstract = "Humans can systematically generalize to novel compositions of existing concepts. Recent studies argue that neural networks appear inherently ineffective in such cognitive capacity, leading to a pessimistic view and a lack of attention to optimistic results. We revisit this controversial topic from the perspective of meaningful learning, an exceptional capability of humans to learn novel concepts by connecting them with known ones. We reassess the compositional skills of sequence-to-sequence models conditioned on the semantic links between new and old concepts. Our observations suggest that models can successfully one-shot generalize to novel concepts and compositions through semantic linking, either inductively or deductively. We demonstrate that prior knowledge plays a key role as well. In addition to synthetic tests, we further conduct proof-of-concept experiments in machine translation and semantic parsing, showing the benefits of meaningful learning in applications. We hope our positive findings will encourage excavating modern neural networks{'} potential in systematic generalization through more advanced learning schemes.",
+}
 ```
