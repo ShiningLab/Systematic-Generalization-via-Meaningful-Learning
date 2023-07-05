@@ -1,7 +1,7 @@
 # Systematic-Generalization-via-Meaningful-Learning
 This repository is for the paper [Revisit Systematic Generalization via Meaningful Learning](https://aclanthology.org/2022.blackboxnlp-1.6). *In Proceedings of the Fifth BlackboxNLP Workshop on Analyzing and Interpreting Neural Networks for NLP*, pages 62–79, Abu Dhabi, United Arab Emirates (Hybrid). Association for Computational Linguistics.
 
-[[arXiv](https://arxiv.org/abs/2003.06658)] [[Poster](https://www.shininglab.ai/assets/posters/Revisit_Systematic_Generalization_via_Meaningful_Learning.pdf)]
+[[arXiv](https://arxiv.org/abs/2003.06658)] [[Poster](https://www.shininglab.ai/assets/posters/Revisit%20Systematic%20Generalization%20via%20Meaningful%20Learning.pdf)]
 
 ## Directory
 + **main/config.py** - Configurations
